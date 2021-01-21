@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title id="titleArticle"></title>
+</head>
+<body>
+    <header>
+        <div>
+            <h1>Сервис классификации текстов сайта Finam.ru</h1>
+            <ul>
+                <li><a href="/">Классификация статьи</a></li>
+                <li><a href="/articles-collection">Коллекция новостных статей</a></li>
+                <li><a href="/add-article">Добавить новостную статью</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <div id="articleInformationLayer">
+        <div>
+            <h1 id="titleArticleInBody"></h1>
+        </div>
+        <br>
+        <div>
+            <p id="urlArticle"></p>
+        </div>
+        <br>
+        <div>
+            <p id="categoryArticle"></p>
+        </div>
+        <br>
+        <div>
+            <p id="textArticle"></p>
+        </div>
+    </div>
+
+    <script src="/static/showArticle.js"></script>
+    <script defer>
+        showArticleInformation();
+    </script>
+</body>
+</html>

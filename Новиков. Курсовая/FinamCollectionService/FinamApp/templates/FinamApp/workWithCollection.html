@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Работа с коллекцией новостных статей</title>
+</head>
+<body>
+    <header>
+        <div>
+            <h1>Сервис классификации текстов сайта Finam.ru</h1>
+            <ul>
+                <li><a href="/">Классификация статьи</a></li>
+                <li><a href="/articles-collection">Коллекция новостных статей</a></li>
+                <li><a href="/add-article">Добавить новостную статью</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <div>
+        <div>
+            <h1>Фильтрация коллекции новостных статей</h1>
+        </div>
+        <div>
+            <p>Выберете категорию для фильтрации</p>
+            <select id="categorySelect">
+                <option></option>
+                <option>Общество</option>
+                <option>Политика</option>
+                <option>Финансы и рынки</option>
+                <option>Экономика</option>
+            </select>
+            <button id="filterButton" onclick="filterByCategory()">Найти</button>
+        </div>
+        <div>
+            <p id="countArticles"></p>
+        </div>
+        <div id="filteredArticles"></div>
+        <div id="pages"></div>
+        <div>
+            <p hidden id="filterError"></p>
+        </div>
+    </div>
+
+    <script src="/static/filterCollection.js"></script>
+
+    <script defer>
+        showArticlesOnPage('', 1);
+    </script>
+
+</body>
+</html>

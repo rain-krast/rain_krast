@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Ввод новостной статьи</title>
+</head>
+<body>
+    <header>
+        <div>
+            <h1>Сервис классификации текстов сайта Finam.ru</h1>
+            <ul>
+                <li><a href="/">Классификация статьи</a></li>
+                <li><a href="/articles-collection">Коллекция новостных статей</a></li>
+                <li><a href="/add-article">Добавить новостную статью</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <div>
+        <div>
+            <h1>Ввод новостной статьи</h1>
+        </div>
+        <div>
+            <p>Введите ссылку на статью</p><p hidden id="urlError"></p>
+            <input type="url" id="inputUrl"/>
+            <p>Введите категорию статьи</p><p hidden id="categoryError"></p>
+            <select id="inputCategory">
+                <option>Общество</option>
+                <option>Политика</option>
+                <option>Финансы и рынки</option>
+                <option>Экономика</option>
+            </select>
+            <p>Введите заголовок статьи</p><p hidden id="titleError"></p>
+            <input id="inputTitle" />
+            <p>Введите текст статьи</p><p hidden id="textError"></p>
+            <textarea id="inputText" rows="10" cols="60"></textarea>
+            <br>
+            <button id="addButton" onclick="addArticle()">Добавить статью</button>
+            <p id="resultAdd"></p>
+            <p hidden id="addError"></p>
+        </div>
+    </div>
+
+    <script src="/static/addArticles.js"></script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<html>
+<head><title>Классификатор текстов сайта Финам</title></head>
+<body>
+    <header>
+        <div>
+            <h1>Сервис классификации текстов сайта Finam.ru</h1>
+            <ul>
+                <li><a href="/">Классификация статьи</a></li>
+                <li><a href="/articles-collection">Коллекция новостных статей</a></li>
+                <li><a href="/add-article">Добавить новостную статью</a></li>
+            </ul>
+        </div>
+    </header>
+    <div>
+        <div>
+            <h1>Классификация статьи</h1>
+        </div>
+        <div>
+            <p>Введите текст классифицируемой новостной статьи</p>
+            <textarea id="textForClassify" cols="150" rows="20"></textarea>
+        </div>
+        <div>
+            <button id="classifyButton" onclick="classify()">Классифицировать</button>
+        </div>
+        <div>
+            <p id="classifyResult"></p>
+        </div>
+        <div>
+            <p id="classifyError"></p>
+        </div>
+        <div>
+            <button id="learnModelButton" onclick="learnModel()">Переобучить модель классификатора</button>
+            <img hidden id="learnLoad" src="/static/media/load.gif"/>
+        </div>
+        <div>
+            <p id="learnResult"></p>
+        </div>
+        <div>
+            <p id="learnError" hidden></p>
+        </div>
+    </div>
+
+    <script src="/static/classifier.js"></script>
+</body>
+</html>
