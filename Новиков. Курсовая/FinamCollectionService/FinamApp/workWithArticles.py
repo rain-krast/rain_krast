@@ -3,7 +3,7 @@ from FinamApp.models import Article
 def getPageLimit():
     return 50
 
-def getPageBorders(page, pageLimit, querySet):
+def getPageBorders(page, pageLimit, querySet): #выдача элементов конкретной страницы
     lenQuerySet = len(querySet)
     startElement = pageLimit * (page - 1)
     endElement = (pageLimit * page)
@@ -14,7 +14,7 @@ def getPageBorders(page, pageLimit, querySet):
         return False
     return querySet[startElement:endElement]
 
-def articlesGet(page):
+def articlesGet(page): #выдача сокращенной информации о статьях определенной страницы
     pageLimit = getPageLimit()
     getResult = {}
     getResult["articles"] = []
@@ -38,7 +38,7 @@ def articlesGet(page):
 
     return getResult
 
-def articlesFilterByCategory(category, page):
+def articlesFilterByCategory(category, page): #выдача сокращенной информации об отфильтрованных статьях определенной страницы
     pageLimit = getPageLimit()
     filterResult = {}
     filterResult["articles"] = []
@@ -62,7 +62,7 @@ def articlesFilterByCategory(category, page):
 
     return filterResult
 
-def articleDelete(id):
+def articleDelete(id): #удаление статьи из коллекции
     queryForDelete = Article.objects.filter(pk=id)
     if queryForDelete.exists():
         queryForDelete.delete()
@@ -70,7 +70,7 @@ def articleDelete(id):
     else:
         return False
 
-def articleGet(id):
+def articleGet(id): #выдача полной информации о конкретной статье
     queryForGet = Article.objects.filter(pk=id)
     if queryForGet.exists():
         articleFullInformation = {}
@@ -82,7 +82,7 @@ def articleGet(id):
     else:
         return False
 
-def articleAdd(source, title, category, text):
+def articleAdd(source, title, category, text): #добавление статьи в коллекцию
     articleForAdd = Article()
     articleForAdd.source = source
     articleForAdd.title = title

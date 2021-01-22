@@ -9,7 +9,7 @@ from FinamApp import workWithArticles
 from FinamApp import core
 
 @csrf_exempt
-def loadXml(request):
+def loadXml(request): #точка входа для загрузки в бд xml файлов
     if request.method == "POST":
         xmlToSqlite.writeXmlFilesToSqlite()
         return HttpResponse("xml loaded to sqlite")
@@ -17,7 +17,7 @@ def loadXml(request):
         return HttpResponse("method not supported", status=405)
 
 @csrf_exempt
-def getPageArticles(request):
+def getPageArticles(request): #точка входа для вывода определенной страницы превью новостей
     if request.method == "POST":
         if request.content_type != "application/json":
             return HttpResponse("unsupported content type", status=415)
@@ -52,7 +52,7 @@ def getPageArticles(request):
         return HttpResponse("method not supported", status=405)
 
 @csrf_exempt
-def articlesPageFilterByCategory(request):
+def articlesPageFilterByCategory(request): #точка входа для вывода определенной страницы превью отфильтрованных новостей
     if request.method == "POST":
         if request.content_type != "application/json":
             return HttpResponse("unsupported content type", status=415)
@@ -94,7 +94,7 @@ def articlesPageFilterByCategory(request):
         return HttpResponse("method not supported", status=405)
 
 @csrf_exempt
-def deleteOrGetArticle(request, id):
+def deleteOrGetArticle(request, id): #точка входа для удаления или получения информации определенной статьи
     if request.method == "DELETE":
         deleteResult = workWithArticles.articleDelete(id)
         if deleteResult:
@@ -116,7 +116,7 @@ def deleteOrGetArticle(request, id):
         return HttpResponse("method not supported", status=405)
 
 @csrf_exempt
-def addArticle(request):
+def addArticle(request): #точка входа для добавления статьи в коллекцию
     if request.method == "POST":
         if request.content_type != "application/json":
             return HttpResponse("unsupported content type", status=415);
@@ -178,7 +178,7 @@ def addArticle(request):
         return HttpResponse("method not supported", status=405)
 
 @csrf_exempt
-def classifierModelLearn(request):
+def classifierModelLearn(request): #точка входа для переобучения модели
     if request.method == "POST":
         core.classifierLearn()
         return HttpResponse("learning model success")
@@ -186,7 +186,7 @@ def classifierModelLearn(request):
         return HttpResponse("method not supported", status=405)
 
 @csrf_exempt
-def classifyArticle(request):
+def classifyArticle(request): #точка входа для классификации текста
     if request.method == "POST":
         if request.content_type != "application/json":
             return HttpResponse("bad request", status=400)

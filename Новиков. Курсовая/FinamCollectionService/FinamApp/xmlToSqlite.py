@@ -3,7 +3,7 @@ import lxml.etree as ET
 from FinamApp.models import Article
 from FinamCollectionService import settings
 
-def getArticleInformation(fileName):
+def getArticleInformation(fileName): #парсим xml файл со статьей
     fields = {}
     newTree = ET.parse(fileName)
     fields["source"] = newTree.find(".//source").text
@@ -12,7 +12,7 @@ def getArticleInformation(fileName):
     fields["text"] = newTree.find(".//text").text
     return fields
 
-def xmlFileToSqlite(fields):
+def xmlFileToSqlite(fields): #сохраняем модель статьи в бд
     articleToSave = Article()
     articleToSave.source = fields["source"]
     articleToSave.category = fields["category"]
@@ -21,7 +21,7 @@ def xmlFileToSqlite(fields):
 
     articleToSave.save()
             
-def writeXmlFilesToSqlite():
+def writeXmlFilesToSqlite(): #переводим xml файлы в бд, проходясь по заданной папке
     dirName = "articles"
     newsFilesName = os.listdir(settings.BASE_DIR + "\\" + dirName)
     Article.objects.all().delete()
